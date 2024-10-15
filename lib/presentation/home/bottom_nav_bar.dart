@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 import '../../consts/icons.dart';
@@ -20,58 +22,55 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      height: 70,
-      decoration: ShapeDecoration(
-        color: Color(0xD6333333),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
+    return ClipRect(
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 4.0, sigmaY: 4.0),
+        child: Container(
+          alignment: Alignment.center,
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          height: 70,
+          decoration: ShapeDecoration(
+            color: Colors.black.withOpacity(0.3),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              NavItem(
+                index: 0,
+                selectedIndex: _selectedIndex,
+                onTap: _onItemTapped,
+                icon: AppIcons.iconNav01Home,
+              ),
+              NavItem(
+                index: 1,
+                selectedIndex: _selectedIndex,
+                onTap: _onItemTapped,
+                icon: AppIcons.iconNav02User,
+              ),
+              NavItem(
+                index: 2,
+                selectedIndex: _selectedIndex,
+                onTap: _onItemTapped,
+                icon: AppIcons.iconNav03Wallet,
+              ),
+              NavItem(
+                index: 3,
+                selectedIndex: _selectedIndex,
+                onTap: _onItemTapped,
+                icon: AppIcons.iconNav04Bucket,
+              ),
+              NavItem(
+                index: 4,
+                selectedIndex: _selectedIndex,
+                onTap: _onItemTapped,
+                icon: AppIcons.iconNav05Message,
+              ),
+            ],
+          ),
         ),
-        shadows: [
-          BoxShadow(
-            color: Color(0x3F000000),
-            blurRadius: 4,
-            offset: Offset(0, 4),
-            spreadRadius: 0,
-          )
-        ],
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          NavItem(
-            index: 0,
-            selectedIndex: _selectedIndex,
-            onTap: _onItemTapped,
-            icon: AppIcons.iconNav01Home,
-          ),
-          NavItem(
-            index: 1,
-            selectedIndex: _selectedIndex,
-            onTap: _onItemTapped,
-            icon: AppIcons.iconNav02User,
-          ),
-          NavItem(
-            index: 2,
-            selectedIndex: _selectedIndex,
-            onTap: _onItemTapped,
-            icon: AppIcons.iconNav03Wallet,
-          ),
-          NavItem(
-            index: 3,
-            selectedIndex: _selectedIndex,
-            onTap: _onItemTapped,
-            icon: AppIcons.iconNav04Bucket,
-          ),
-          NavItem(
-            index: 4,
-            selectedIndex: _selectedIndex,
-            onTap: _onItemTapped,
-            icon: AppIcons.iconNav05Message,
-          ),
-        ],
       ),
     );
   }
