@@ -41,107 +41,78 @@ class _BottomNavBarState extends State<BottomNavBar> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          GestureDetector(
-            onTap: () => _onItemTapped(0),
-            child: _selectedIndex == 0
-                ? Container(
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.black.withOpacity(0.7),
-                      border: Border.all(
-                        color: Colors.brown,
-                        width: 2.0,
-                      ),
-                    ),
-                    child: SizedBox(
-                      height: 40,
-                      width: 40,
-                      child: Image.asset(AppIcons.iconNav01Home),
-                    ),
-                  )
-                : Image.asset(AppIcons.iconNav01Home),
+          NavItem(
+            index: 0,
+            selectedIndex: _selectedIndex,
+            onTap: _onItemTapped,
+            icon: AppIcons.iconNav01Home,
           ),
-          GestureDetector(
-            onTap: () => _onItemTapped(1),
-            child: _selectedIndex == 1
-                ? Container(
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.black.withOpacity(0.7),
-                      border: Border.all(
-                        color: Colors.brown,
-                        width: 2.0,
-                      ),
-                    ),
-                    child: SizedBox(
-                      height: 40,
-                      width: 40,
-                      child: Image.asset(AppIcons.iconNav02User),
-                    ),
-                  )
-                : Image.asset(AppIcons.iconNav02User),
+          NavItem(
+            index: 1,
+            selectedIndex: _selectedIndex,
+            onTap: _onItemTapped,
+            icon: AppIcons.iconNav02User,
           ),
-          GestureDetector(
-            onTap: () => _onItemTapped(2),
-            child: _selectedIndex == 2
-                ? Container(
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.black.withOpacity(0.7),
-                      border: Border.all(
-                        color: Colors.brown,
-                        width: 2.0,
-                      ),
-                    ),
-                    child: SizedBox(
-                      height: 40,
-                      width: 40,
-                      child: Image.asset(AppIcons.iconNav03Wallet),
-                    ),
-                  )
-                : Image.asset(AppIcons.iconNav03Wallet),
+          NavItem(
+            index: 2,
+            selectedIndex: _selectedIndex,
+            onTap: _onItemTapped,
+            icon: AppIcons.iconNav03Wallet,
           ),
-          GestureDetector(
-            onTap: () => _onItemTapped(3),
-            child: _selectedIndex == 3
-                ? Container(
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.black.withOpacity(0.7),
-                      border: Border.all(
-                        color: Colors.brown,
-                        width: 2.0,
-                      ),
-                    ),
-                    child: SizedBox(
-                      height: 40,
-                      width: 40,
-                      child: Image.asset(AppIcons.iconNav04Bucket),
-                    ),
-                  )
-                : Image.asset(AppIcons.iconNav04Bucket),
+          NavItem(
+            index: 3,
+            selectedIndex: _selectedIndex,
+            onTap: _onItemTapped,
+            icon: AppIcons.iconNav04Bucket,
           ),
-          GestureDetector(
-            onTap: () => _onItemTapped(4),
-            child: _selectedIndex == 4
-                ? Container(
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.black.withOpacity(0.7),
-                      border: Border.all(
-                        color: Colors.brown,
-                        width: 2.0,
-                      ),
-                    ),
-                    child: SizedBox(
-                      height: 40,
-                      width: 40,
-                      child: Image.asset(AppIcons.iconNav05Message),
-                    ),
-                  )
-                : Image.asset(AppIcons.iconNav05Message),
+          NavItem(
+            index: 4,
+            selectedIndex: _selectedIndex,
+            onTap: _onItemTapped,
+            icon: AppIcons.iconNav05Message,
           ),
         ],
+      ),
+    );
+  }
+}
+
+class NavItem extends StatelessWidget {
+  final int index;
+  final int selectedIndex;
+  final Function(int) onTap;
+  final String icon;
+
+  const NavItem({
+    super.key,
+    required this.index,
+    required this.selectedIndex,
+    required this.onTap,
+    required this.icon,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => onTap(index),
+      child: AnimatedContainer(
+        duration: Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: selectedIndex == index
+              ? Colors.black.withOpacity(0.7)
+              : Colors.transparent,
+          border: Border.all(
+            color: selectedIndex == index ? Colors.brown : Colors.transparent,
+            width: 2.0,
+          ),
+        ),
+        child: SizedBox(
+          height: 40,
+          width: 40,
+          child: Image.asset(icon),
+        ),
       ),
     );
   }
