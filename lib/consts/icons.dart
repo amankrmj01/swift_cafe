@@ -8,4 +8,5 @@ class AppIcons {
   static const String iconDetails01Veg = 'assets/icons/icon_details_01_veg.png';
   static const String iconHome01Search = 'assets/icons/icon_home_01_search.png';
   static const String iconHome02Filter = 'assets/icons/icon_home_02_filter.png';
+  static const String warning = 'assets/icons/warning.png';
 }

@@ -9,15 +9,40 @@ class DetailsController extends GetxController {
     ['Oat Milk', false],
     ['Lactose Free Milk', false],
     ['Butter Milk', false],
-    ['Butter', false], // Last cell is not empty
+    [null, false], // Last cell is not empty
   ].obs;
 
+  final sugarData = [
+    ['Sugar X1', false],
+    ['Sugar X2', false],
+    ['½ Sugar', false],
+    ['No Sugar', false],
+  ].obs;
+
+  final cupChoice = [
+    'Full',
+    '1/2 Full',
+    '3/4 Full',
+    '1/4 Full',
+  ].obs;
+
+  var selectedCupIndex = 0.obs;
+
   void toggleMilkData(int index, bool value) {
-    // Ensure the index is within range
     if (index >= 0 && index < milkData.length) {
-      // Update the value at the specified index
       milkData[index][1] = value;
-      milkData.refresh(); // Refresh the list to trigger a UI update
+      milkData.refresh();
     }
+  }
+
+  void toggleSugarData(int index, bool value) {
+    if (index >= 0 && index < sugarData.length) {
+      sugarData[index][1] = value;
+      sugarData.refresh();
+    }
+  }
+
+  void setSelectedCupIndex(int index) {
+    selectedCupIndex.value = index;
   }
 }

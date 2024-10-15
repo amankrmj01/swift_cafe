@@ -1,51 +1,61 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:swift_cafe/presentation/details/controllers/details.controller.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class MilkGrid extends StatelessWidget {
-  final List<List<dynamic>> milkData = [
-    ['Skim Milk', false],
-    ['Full cream milk', false],
-    ['Soy Milk', false],
-    ['Almond Milk', false],
-    ['Oat Milk', false],
-    ['Lactose Free Milk', false],
-    ['Butter Milk', false],
-    ['Butter', false], // Last cell is empty
-  ];
+  const MilkGrid({
+    super.key,
+    required this.controller,
+  });
 
-  MilkGrid({super.key});
+  final DetailsController controller;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Milk Grid'),
+    return GridView.builder(
+      padding: EdgeInsets.zero,
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        mainAxisSpacing: 0,
+        crossAxisSpacing: 0,
+        childAspectRatio: 6 / 2,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            childAspectRatio: 4,
-            mainAxisSpacing: 8,
-            crossAxisSpacing: 8,
-          ),
-          itemCount: milkData.length,
-          itemBuilder: (context, index) {
-            final item = milkData[index];
-            return item[0] == ''
-                ? Container() // Empty container for the last cell
-                : ListTile(
-                    title: Text(item[0]),
-                    trailing: Switch(
-                      value: item[1],
-                      onChanged: (bool value) {
-                        // Handle switch state change
-                      },
+      itemCount: controller.milkData.length, // Number of grid items
+      itemBuilder: (context, index) {
+        return controller.milkData[index][0] == null
+            ? SizedBox()
+            : Container(
+                // padding: EdgeInsets.symmetric(horizontal: 8),
+                margin: EdgeInsets.zero,
+                child: Row(
+                  children: [
+                    Obx(
+                      () => Switch(
+                        value: controller.milkData[index][1]
+                            as bool, // Cast to bool
+                        onChanged: (bool value) {
+                          controller.toggleMilkData(
+                              index, value); // Update the state
+                        },
+                      ).scale(scaleValue: 0.6),
                     ),
-                  );
-          },
-        ),
-      ),
+                    Expanded(
+                      child: Text(
+                        controller.milkData[index][0] as String,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: 'Inter',
+                          fontSize: 16,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              );
+      },
     );
   }
 }
