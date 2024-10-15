@@ -36,5 +36,10 @@ class Nav {
       page: () => const AuthScreen(),
       binding: AuthControllerBinding(),
     ),
+    GetPage(
+      name: Routes.DETAILS,
+      page: () => const DetailsScreen(),
+      binding: DetailsControllerBinding(),
+    ),
   ];
 }

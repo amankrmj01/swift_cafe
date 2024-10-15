@@ -1,7 +1,11 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:swift_cafe/presentation/auth/auth.screen.dart';
+import 'package:swift_cafe/presentation/home/instantly.dart';
 import 'package:velocity_x/velocity_x.dart';
+import '../../consts/images.dart';
 import 'bottom_nav_bar.dart';
 import 'controllers/home.controller.dart';
 import 'controllers/search_bar.dart';
@@ -18,21 +22,26 @@ class HomeScreen extends GetView<HomeController> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Stack(
-        alignment: Alignment.center,
+        alignment: Alignment.topCenter,
         children: [
           HomeLayer01(),
           HomeLayer02(),
           AuthLayer01(),
           SafeArea(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                HomeRow01(controller: controller),
-                20.heightBox,
-                AppSearchBar(),
-                20.heightBox,
-                PopularBeverages(),
-                20.heightBox,
+            child: CustomScrollView(
+              slivers: [
+                SliverToBoxAdapter(
+                  child: HomeRow01(
+                    controller: controller,
+                  ),
+                ),
+                SliverToBoxAdapter(
+                  child: PopularBeverages(),
+                ),
+                GetItInstantly(),
+                SliverToBoxAdapter(
+                  child: 80.heightBox,
+                ),
               ],
             ),
           ),
