@@ -5,4 +5,5 @@ class AppImages {
   static const Coffee2_2 = 'assets/images/Coffee2_2.png';
   static const Coffee2_3 = 'assets/images/Coffee2_3.png';
   static const homeCoffee1 = 'assets/images/home_coffee.png';
+  static const detailsCoffee1 = 'assets/images/details_coffee_01_latte.png';
 }

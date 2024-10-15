@@ -70,7 +70,7 @@ class HomeScreen extends GetView<HomeController> {
             duration: Duration(milliseconds: 500),
             left: 20,
             right: 20,
-            bottom: 20,
+            bottom: 12,
             child: BottomNavBar(),
           ),
         ],
