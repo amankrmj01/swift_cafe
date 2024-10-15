@@ -1,5 +1,5 @@
 class AppDetails {
-  static const String appName = "Swift Cafe";
+  static const String appName = "Swift Café";
   static const String appVersion = "1.0.0";
   static const String appBuildNumber = "1";
   static const String appPackage = "com.amankrmj.swift_cafe";
