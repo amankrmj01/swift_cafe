@@ -1,23 +1,15 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class HomeController extends GetxController {
-  //TODO: Implement HomeController
+  var now = DateTime.now().obs;
+  var currDate = ''.obs;
+  ScrollController scrollController = ScrollController();
 
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
+    currDate.value = DateFormat('dd/MM/yyyy').format(now.value);
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }
