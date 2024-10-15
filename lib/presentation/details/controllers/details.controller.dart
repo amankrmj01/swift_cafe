@@ -1,23 +1,14 @@
 import 'package:get/get.dart';
 
 class DetailsController extends GetxController {
-  //TODO: Implement DetailsController
-
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
+  final List<List<dynamic>> milkData = [
+    ['Skim Milk', false],
+    ['Full cream milk', false],
+    ['Soy Milk', false],
+    ['Almond Milk', false],
+    ['Oat Milk', false],
+    ['Lactose Free Milk', false],
+    ['Butter Milk', false],
+    ['Butter', false], // Last cell is empty
+  ].obs;
 }
