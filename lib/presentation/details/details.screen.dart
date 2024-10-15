@@ -121,11 +121,14 @@ class DetailsScreen extends GetView<DetailsController> {
                   4.heightBox,
                   Obx(
                     () => ListTile(
-                      title: Text(controller.milkData[1][0]),
+                      title: Text(controller.milkData[1][0]
+                          as String), // Cast to String
                       trailing: Switch(
-                        value: controller.milkData[1][1],
+                        value:
+                            controller.milkData[1][1] as bool, // Cast to bool
                         onChanged: (bool value) {
-                          controller.milkData[1][1] = value;
+                          controller.toggleMilkData(
+                              1, value); // Update the state
                         },
                       ),
                     ),
