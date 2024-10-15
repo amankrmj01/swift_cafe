@@ -106,7 +106,7 @@ class AuthDisplayText extends StatelessWidget {
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-            color: Colors.white.withOpacity(0.5),
+            color: Colors.white.withOpacity(0.2),
             blurRadius: 10,
             spreadRadius: 2,
           ),
