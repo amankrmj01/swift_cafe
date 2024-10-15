@@ -1,6 +1,6 @@
 # swift_cafe
 
-seequenze tech
+sequence tech
 
 ## Getting Started
 
