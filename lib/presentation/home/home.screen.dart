@@ -1,14 +1,11 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:swift_cafe/presentation/auth/auth.screen.dart';
+import 'package:swift_cafe/presentation/home/controllers/search_bar.dart';
 import 'package:swift_cafe/presentation/home/instantly.dart';
 import 'package:velocity_x/velocity_x.dart';
-import '../../consts/images.dart';
 import 'bottom_nav_bar.dart';
 import 'controllers/home.controller.dart';
-import 'controllers/search_bar.dart';
 import 'home_layer_01.dart';
 import 'home_layer_02.dart';
 import 'home_row_01.dart';
@@ -30,9 +27,33 @@ class HomeScreen extends GetView<HomeController> {
           SafeArea(
             child: CustomScrollView(
               slivers: [
-                SliverToBoxAdapter(
-                  child: HomeRow01(
-                    controller: controller,
+                SliverAppBar(
+                  pinned: true,
+                  backgroundColor: Colors.transparent,
+                  expandedHeight: 130,
+                  collapsedHeight: 110,
+                  elevation: 0,
+                  flexibleSpace: LayoutBuilder(
+                    builder:
+                        (BuildContext context, BoxConstraints constraints) {
+                      final scrollPercentage =
+                          (constraints.maxHeight - kToolbarHeight) /
+                              (130 - kToolbarHeight);
+                      final backgroundColor = Color.lerp(
+                          Colors.black, Colors.transparent, scrollPercentage);
+
+                      return Container(
+                        color: backgroundColor,
+                        child: Column(
+                          children: [
+                            HomeRow01(
+                              controller: controller,
+                            ),
+                            AppSearchBar(),
+                          ],
+                        ),
+                      );
+                    },
                   ),
                 ),
                 SliverToBoxAdapter(

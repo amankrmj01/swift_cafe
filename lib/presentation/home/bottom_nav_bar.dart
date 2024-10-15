@@ -22,7 +22,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRect(
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(15),
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 4.0, sigmaY: 4.0),
         child: Container(
