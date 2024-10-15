@@ -121,6 +121,13 @@ class AuthDisplayText extends StatelessWidget {
           fontFamily: 'Raleway',
           fontWeight: FontWeight.w400,
           height: 0,
+          shadows: [
+            Shadow(
+              blurRadius: 10.0,
+              color: Colors.white,
+              offset: Offset(0, 0),
+            ),
+          ],
         ),
       ),
     );

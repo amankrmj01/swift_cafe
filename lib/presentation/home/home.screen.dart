@@ -31,7 +31,7 @@ class HomeScreen extends GetView<HomeController> {
                   pinned: true,
                   backgroundColor: Colors.transparent,
                   expandedHeight: 130,
-                  collapsedHeight: 110,
+                  collapsedHeight: 114,
                   elevation: 0,
                   flexibleSpace: LayoutBuilder(
                     builder:
@@ -49,6 +49,7 @@ class HomeScreen extends GetView<HomeController> {
                             HomeRow01(
                               controller: controller,
                             ),
+                            4.heightBox,
                             AppSearchBar(),
                           ],
                         ),
