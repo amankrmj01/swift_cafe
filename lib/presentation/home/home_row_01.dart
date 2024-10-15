@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 import '../../consts/app_detials.dart';
 import '../../consts/icons.dart';
@@ -19,6 +20,7 @@ class HomeRow01 extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
+        4.widthBox,
         Flexible(
           flex: 1,
           child: Text(
@@ -88,7 +90,9 @@ class HomeRow01 extends StatelessWidget {
             backgroundImage: AssetImage(AppImages.backgroundAuth01),
           ),
         ),
+        4.widthBox,
       ],
     );
+    // .box.roundedSM.color(Colors.black.withOpacity(0.2)).make();
   }
 }
