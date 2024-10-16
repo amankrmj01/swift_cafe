@@ -2,6 +2,11 @@
 
 Swift Cafe is a mobile application designed to enhance your coffee experience. With Swift Cafe, you can explore various coffee recipes, manage your favorite coffee, and stay updated with the latest coffee trends.
 
+## Table of Contents
+- [Features](Features)
+- Dependencies
+- Screenshots
+
 ## Features
 
 - **Login Screen**: Simple login screen for user authentication.
