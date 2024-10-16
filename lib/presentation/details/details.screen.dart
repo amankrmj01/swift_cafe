@@ -210,6 +210,7 @@ class DetailsScreen extends GetView<DetailsController> {
                         AppIcons.warning,
                         width: 16,
                         height: 16,
+                        fit: BoxFit.cover,
                       ),
                       Spacer(),
                       ElevatedButton(

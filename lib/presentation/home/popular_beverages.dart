@@ -16,9 +16,9 @@ class PopularBeverages extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.to(
+        Get.toNamed(
           Routes.DETAILS,
-          transition: Transition.zoom,
+          // transition: Transition.zoom,
         );
       },
       child: Container(

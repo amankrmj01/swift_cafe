@@ -1,6 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:swift_cafe/presentation/main/controllers/main.controller.dart';
 
 import '../../consts/icons.dart';
 
@@ -12,13 +14,11 @@ class BottomNavBar extends StatefulWidget {
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
-  int _selectedIndex = 0;
-
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    controller.smoothJumpToPage(index);
   }
+
+  MainController controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -36,41 +36,41 @@ class _BottomNavBarState extends State<BottomNavBar> {
               borderRadius: BorderRadius.circular(15),
             ),
           ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              NavItem(
-                index: 0,
-                selectedIndex: _selectedIndex,
-                onTap: _onItemTapped,
-                icon: AppIcons.iconNav01Home,
-              ),
-              NavItem(
-                index: 1,
-                selectedIndex: _selectedIndex,
-                onTap: _onItemTapped,
-                icon: AppIcons.iconNav02User,
-              ),
-              NavItem(
-                index: 2,
-                selectedIndex: _selectedIndex,
-                onTap: _onItemTapped,
-                icon: AppIcons.iconNav03Wallet,
-              ),
-              NavItem(
-                index: 3,
-                selectedIndex: _selectedIndex,
-                onTap: _onItemTapped,
-                icon: AppIcons.iconNav04Bucket,
-              ),
-              NavItem(
-                index: 4,
-                selectedIndex: _selectedIndex,
-                onTap: _onItemTapped,
-                icon: AppIcons.iconNav05Message,
-              ),
-            ],
-          ),
+          child: Obx(() => Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  NavItem(
+                    index: 0,
+                    selectedIndex: controller.selectedIndex.value,
+                    onTap: _onItemTapped,
+                    icon: AppIcons.iconNav01Home,
+                  ),
+                  NavItem(
+                    index: 1,
+                    selectedIndex: controller.selectedIndex.value,
+                    onTap: _onItemTapped,
+                    icon: AppIcons.iconNav02User,
+                  ),
+                  NavItem(
+                    index: 2,
+                    selectedIndex: controller.selectedIndex.value,
+                    onTap: _onItemTapped,
+                    icon: AppIcons.iconNav03Wallet,
+                  ),
+                  NavItem(
+                    index: 3,
+                    selectedIndex: controller.selectedIndex.value,
+                    onTap: _onItemTapped,
+                    icon: AppIcons.iconNav04Bucket,
+                  ),
+                  NavItem(
+                    index: 4,
+                    selectedIndex: controller.selectedIndex.value,
+                    onTap: _onItemTapped,
+                    icon: AppIcons.iconNav05Message,
+                  ),
+                ],
+              )),
         ),
       ),
     );

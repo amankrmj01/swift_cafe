@@ -4,7 +4,11 @@ class Routes {
   }
 
   static const AUTH = '/auth';
-  static const HOME = '/home';
-  static const ORDER = '/order';
+  static const CART = '/cart';
   static const DETAILS = '/details';
+  static const HOME = '/home';
+  static const NOTIFICATION = '/notification';
+  static const USER = '/user';
+  static const WALLET = '/wallet';
+  static const MAIN = '/main';
 }

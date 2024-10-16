@@ -4,7 +4,6 @@ import 'package:swift_cafe/presentation/auth/auth.screen.dart';
 import 'package:swift_cafe/presentation/home/controllers/search_bar.dart';
 import 'package:swift_cafe/presentation/home/instantly.dart';
 import 'package:velocity_x/velocity_x.dart';
-import 'bottom_nav_bar.dart';
 import 'controllers/home.controller.dart';
 import 'home_layer_01.dart';
 import 'home_layer_02.dart';
@@ -26,6 +25,7 @@ class HomeScreen extends GetView<HomeController> {
           AuthLayer01(),
           SafeArea(
             child: CustomScrollView(
+              controller: controller.scrollController,
               slivers: [
                 SliverAppBar(
                   pinned: true,
@@ -60,19 +60,23 @@ class HomeScreen extends GetView<HomeController> {
                 SliverToBoxAdapter(
                   child: PopularBeverages(),
                 ),
+                SliverToBoxAdapter(
+                  child: Text(
+                    '\n     Get it instantly',
+                    style: TextStyle(
+                      color: Color(0xFFB5B5B5),
+                      fontSize: 20,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
                 GetItInstantly(),
                 SliverToBoxAdapter(
                   child: 80.heightBox,
                 ),
               ],
             ),
-          ),
-          AnimatedPositioned(
-            duration: Duration(milliseconds: 500),
-            left: 20,
-            right: 20,
-            bottom: 12,
-            child: BottomNavBar(),
           ),
         ],
       ),

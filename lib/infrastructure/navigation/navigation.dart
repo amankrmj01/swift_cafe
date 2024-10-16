@@ -41,5 +41,30 @@ class Nav {
       page: () => const DetailsScreen(),
       binding: DetailsControllerBinding(),
     ),
+    GetPage(
+      name: Routes.USER,
+      page: () => const UserScreen(),
+      binding: UserControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.WALLET,
+      page: () => const WalletScreen(),
+      binding: WalletControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.CART,
+      page: () => const CartScreen(),
+      binding: CartControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.NOTIFICATION,
+      page: () => const NotificationScreen(),
+      binding: NotificationControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.MAIN,
+      page: () => const MainScreen(),
+      binding: MainControllerBinding(),
+    ),
   ];
 }

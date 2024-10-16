@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -28,7 +30,7 @@ class AuthScreen extends GetView<AuthController> {
           AuthBackground(),
           AuthLayer01(),
           AuthLayer02(),
-          AuthLayer03(),
+          // AuthLayer03(),
           TopLayer(controller: controller),
         ],
       ),
@@ -221,32 +223,22 @@ class AuthLayer02 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 366,
-      height: 750,
-      margin: EdgeInsets.all(24),
-      decoration: ShapeDecoration(
-        gradient: LinearGradient(
-          begin: Alignment(0.23, -0.97),
-          end: Alignment(-0.23, 0.97),
-          colors: [
-            Colors.white.withOpacity(0.23000000417232513),
-            Colors.white.withOpacity(0.11999999731779099),
-            Colors.white.withOpacity(0.10999999940395355)
-          ],
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(17),
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 4.0, sigmaY: 4.0),
+        child: Container(
+          height: 750,
+          width: 366,
+          margin: EdgeInsets.zero,
+          padding: EdgeInsets.zero,
+          // margin: EdgeInsets.all(24),
+          color: Colors.white.withOpacity(0.2),
+          child: Image.asset(
+            AppImages.backgroundAuth02,
+            fit: BoxFit.fitHeight,
+          ),
         ),
-        shape: RoundedRectangleBorder(
-          side: BorderSide(width: 1, color: Colors.white),
-          borderRadius: BorderRadius.circular(17),
-        ),
-        shadows: [
-          BoxShadow(
-            color: Color(0x33000000),
-            blurRadius: 24,
-            offset: Offset(0, 4),
-            spreadRadius: -1,
-          )
-        ],
       ),
     );
   }
@@ -297,7 +289,7 @@ class AuthSignUpButton extends StatelessWidget {
       ),
       child: TextButton(
         onPressed: () {
-          Get.offNamed(Routes.HOME);
+          Get.offNamed(Routes.MAIN);
         },
         child: Text(
           'Sign Up',
@@ -346,7 +338,7 @@ class AuthLoginButton extends StatelessWidget {
       ),
       child: TextButton(
         onPressed: () {
-          Get.offNamed(Routes.HOME);
+          Get.offNamed(Routes.MAIN);
         },
         child: Text(
           'Login',
