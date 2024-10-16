@@ -23,4 +23,4 @@ Swift Cafe is a mobile application designed to enhance your coffee experience. W
 - **Intl**: Internationalization and localization support.
 
 ## Screenshots
-<img src="screenshots/Screenshot_Auth_screen.png" alt="Auth Screen" width="200" height="auto" /> <img src="screenshots/Screenshot_Home_screen.png" alt="Home Screen" width="200" height="auto" /> <img src="screenshots/Screenshot_Details_Screen.png" alt="Details Screen" width="200" height="auto" />
+<img src="screenshots/Screenshot_Auth_screen.png" alt="Auth Screen" width="200" height="auto" />&nbsp;&nbsp;&nbsp;&nbsp;<img src="screenshots/Screenshot_Home_screen.png" alt="Home Screen" width="200" height="auto" />&nbsp;&nbsp;&nbsp;&nbsp;<img src="screenshots/Screenshot_Details_Screen.png" alt="Details Screen" width="200" height="auto" />
