@@ -34,12 +34,12 @@ class CupChoiceWidget extends StatelessWidget {
   final Function(int) onTap;
 
   const CupChoiceWidget({
-    Key? key,
+    super.key,
     required this.index,
     required this.label,
     required this.isSelected,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

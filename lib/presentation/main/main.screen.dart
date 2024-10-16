@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:swift_cafe/presentation/home/home.screen.dart';
 import 'package:swift_cafe/presentation/main/bottom_nav_bar.dart';
 import 'package:swift_cafe/presentation/screens.dart';
 import 'controllers/main.controller.dart';

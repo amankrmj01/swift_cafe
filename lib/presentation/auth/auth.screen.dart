@@ -380,9 +380,9 @@ class AuthScreenAppName extends StatelessWidget {
             ),
           ),
           TextSpan(
-            text: '${AppDetails.appName.substring(
+            text: AppDetails.appName.substring(
               AppDetails.appName.indexOf(' ') + 1,
-            )}',
+            ),
             style: TextStyle(
               color: Colors.white,
               fontSize: 40,
