@@ -1,16 +1,24 @@
-# swift_cafe
+# Swift Cafe
 
-sequence tech
+Swift Cafe is a mobile application designed to enhance your coffee experience. With Swift Cafe, you can explore various coffee recipes, manage your favorite coffee, and stay updated with the latest coffee trends.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- **Login Screen**: Simple login screen for user authentication.
+- **Home Screen**: Choose from a variety of coffee options.
+- **User-Friendly Interface**: Enjoy a clean and intuitive user interface.
+- **Details Screen**: Order your coffee with ease.
 
-A few resources to get you started if this is your first Flutter project:
+## Dependencies
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Flutter**: The app is built using the Flutter framework.
+- **Get**: State management solution.
+- **Velocity X**: A minimalist Flutter framework.
+- **Simple Shadow**: Adds shadow effects to widgets.
+- **Intl**: Internationalization and localization support.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Screenshots
+
+![Auth Screen](screenshots/Screenshot_Auth_screen.png)
+![Home Screen](screenshots/Screenshot_Home_screen.png)
+![Order Screen](screenshots/Screenshot_Details_Screen.png)
