@@ -73,7 +73,7 @@ class HomeScreen extends GetView<HomeController> {
                 ),
                 GetItInstantly(),
                 SliverToBoxAdapter(
-                  child: 80.heightBox,
+                  child: 70.heightBox,
                 ),
               ],
             ),

@@ -1,26 +1,25 @@
-import 'dart:async'; // For Timer
+import 'dart:async';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import '../../home/controllers/home.controller.dart';
 
 class MainController extends GetxController {
   final selectedIndex = 0.obs;
   late PageController pageController = PageController();
-  final bottomNavBarPosition = 10.0.obs; // Initial position of the bottom nav
+  final bottomNavBarPosition = 10.0.obs; // Initial bottom nav position
   Timer? _scrollStopTimer; // To detect scroll stops
+  double _lastScrollOffset = 0.0; // To track the last scroll offset
 
   @override
   void onInit() {
     super.onInit();
     pageController = PageController(initialPage: 0);
 
-    // Find the HomeController and add a scroll listener
+    // Attach scroll listener from HomeController
     final homeController = Get.find<HomeController>();
     homeController.scrollController.addListener(_scrollListener);
   }
 
-  // Update the selected index and animate to the new page
   void updateIndex(int index) {
     selectedIndex.value = index;
     pageController.animateToPage(
@@ -30,44 +29,45 @@ class MainController extends GetxController {
     );
   }
 
-  // Jump directly to the given page without animation
   void smoothJumpToPage(int index) {
     selectedIndex.value = index;
     pageController.jumpToPage(index);
   }
 
-  // Scroll listener to hide/show the bottom nav bar
+  // Scroll listener to detect when scrolling happens
   void _scrollListener() {
     final homeController = Get.find<HomeController>();
-    final scrollDirection =
-        homeController.scrollController.position.userScrollDirection;
+    final scrollController = homeController.scrollController;
+    final currentScrollOffset = scrollController.position.pixels;
 
-    if (scrollDirection == ScrollDirection.reverse) {
-      // Hide the bottom nav bar when scrolling down
-      bottomNavBarPosition.value = -50.0;
-
-      // Cancel any existing scroll stop timer to avoid flickering
-      _scrollStopTimer?.cancel();
-    } else if (scrollDirection == ScrollDirection.forward) {
-      // Start the timer to show the bottom nav bar after scrolling stops
-      _startScrollStopTimer();
+    if (currentScrollOffset != _lastScrollOffset) {
+      // If the scroll offset changes, hide the bottom nav bar
+      bottomNavBarPosition.value = -60.0;
+      _lastScrollOffset = currentScrollOffset; // Update the last scroll offset
+      _scrollStopTimer?.cancel(); // Cancel any existing timer
+      _startScrollStopTimer(); // Start the timer to detect if scrolling stops
     }
   }
 
-  // Timer to detect when the user stops scrolling
+  // Timer to detect when scrolling has stopped
   void _startScrollStopTimer() {
-    // Cancel any previous timer if it's still active
-    _scrollStopTimer?.cancel();
+    _scrollStopTimer?.cancel(); // Cancel any existing timer
 
-    // Wait 200ms to confirm the scroll has stopped before showing the navbar
-    _scrollStopTimer = Timer(const Duration(milliseconds: 200), () {
-      bottomNavBarPosition.value = 10.0; // Show the bottom nav bar
+    // Wait 300ms to confirm scroll has stopped before showing the nav bar
+    _scrollStopTimer = Timer(const Duration(milliseconds: 500), () {
+      final homeController = Get.find<HomeController>();
+      final currentScrollOffset =
+          homeController.scrollController.position.pixels;
+
+      // If the scroll offset hasn't changed, consider scrolling stopped
+      if (currentScrollOffset == _lastScrollOffset) {
+        bottomNavBarPosition.value = 10.0; // Show the bottom nav bar
+      }
     });
   }
 
   @override
   void onClose() {
-    // Dispose of the scroll controller and cancel any active timer
     final homeController = Get.find<HomeController>();
     homeController.scrollController.removeListener(_scrollListener);
     _scrollStopTimer?.cancel();
